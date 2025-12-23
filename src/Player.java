@@ -5,6 +5,9 @@ public class Player extends GameObject {
     private int speed = 8;
     private int shootCooldown = 0;
 
+    // Thêm cấp độ súng (Mặc định là 1)
+    private int weaponLevel = 1;
+
     public Player(int x, int y) {
         super(x, y, 50, 50, Color.CYAN);
     }
@@ -36,6 +39,17 @@ public class Player extends GameObject {
         g.setColor(Color.ORANGE);
         g.fillRect(x + 15, y + height, 6, 10);
         g.fillRect(x + 29, y + height, 6, 10);
+    }
+
+    // --- Logic nâng cấp súng ---
+    public void upgradeWeapon() {
+        if (weaponLevel < 5) { // Tăng giới hạn lên Level 5
+            weaponLevel++;
+        }
+    }
+
+    public int getWeaponLevel() {
+        return weaponLevel;
     }
 
     // Các phương thức điều khiển
